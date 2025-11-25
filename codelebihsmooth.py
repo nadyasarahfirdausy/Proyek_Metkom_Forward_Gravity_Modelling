@@ -183,7 +183,7 @@ def forward_model():
     # ---- PROFIL Y=0 ----
     ax2 = fig.add_subplot(2, 1, 2)
     ax2.plot(profile_x, profile_val, linewidth=2)
-    ax2.set_title("Profil g_z Sepanjang X (Y=0) – Smoothed")
+    ax2.set_title("Profil g_z")
     ax2.set_xlabel("X (m)")
     ax2.set_ylabel("g_z (mGal)")
     if grid_var.get() == 1:
