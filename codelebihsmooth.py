@@ -124,7 +124,7 @@ def hitung_interpolasi():
 def forward_model():
     global last_X, last_Y, last_gz
 
-    # grid peta LEBIH LUAS biar anomali kelihatan menyebar
+    # grid peta
     x = np.linspace(-400, 400, 200)
     y = np.linspace(-400, 400, 200)
     X, Y = np.meshgrid(x, y)
@@ -134,8 +134,7 @@ def forward_model():
     else:
         gz_mgal = compute_gz_grid(X, Y, sources)
 
-    # --- SMOOTHING TAMBAHAN supaya bentuk tidak terlalu "bola" tajam ---
-    # kernel rata-rata besar (misal 21x21)
+    # --- SMOOTHING TAMBAHAN ---
     smooth_kernel_size = 21
     kernel = np.ones((smooth_kernel_size, smooth_kernel_size), dtype=float)
     kernel = kernel / kernel.sum()
@@ -169,8 +168,8 @@ def forward_model():
     p = ax1.contourf(X, Y, gz_mgal, levels=40)
     fig.colorbar(p, ax=ax1, label="g_z (mGal)")
     ax1.set_title("Peta Anomali Gravitasi (g_z) [mGal] (Smoothed)")
-    ax1.set_xlabel("X (m) ~ Latitude")
-    ax1.set_ylabel("Y (m) ~ Longitude")
+    ax1.set_xlabel("X (m)")
+    ax1.set_ylabel("Y (m)")
 
     # plot titik sumber + nama
     for i, s in enumerate(sources, start=1):
@@ -303,11 +302,11 @@ tk.Label(frame_left, text="Nama titik:").pack(anchor="w")
 entry_name = tk.Entry(frame_left, width=20)
 entry_name.pack(anchor="w")
 
-tk.Label(frame_left, text="X (m) ~ Latitude:").pack(anchor="w")
+tk.Label(frame_left, text="X (m):").pack(anchor="w")
 entry_x = tk.Entry(frame_left, width=20)
 entry_x.pack(anchor="w")
 
-tk.Label(frame_left, text="Y (m) ~ Longitude:").pack(anchor="w")
+tk.Label(frame_left, text="Y (m):").pack(anchor="w")
 entry_y = tk.Entry(frame_left, width=20)
 entry_y.pack(anchor="w")
 
